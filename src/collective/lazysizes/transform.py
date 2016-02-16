@@ -2,9 +2,12 @@
 from collective.lazysizes.logger import logger
 from lxml import etree
 from plone import api
+from plone.registry.interfaces import IRegistry
 from plone.transformchain.interfaces import ITransform
 from repoze.xmliter.utils import getHTMLSerializer
 from zope.interface import implementer
+from zope.component import getUtility
+from collective.lazysizes.interfaces import ILazySizesSettings
 
 
 @implementer(ITransform)
@@ -64,7 +67,12 @@ class LazySizesTransform(object):
 
     def transformIterable(self, result, encoding):
         if not api.user.is_anonymous():
-            return None
+
+            settings = getUtility(IRegistry).forInterface(
+                ILazySizesSettings, check=False)
+
+            if not settings.authenticated_enabled:
+                return None
 
         result = self._parse(result)
         if result is None:
