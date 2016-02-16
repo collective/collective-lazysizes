@@ -71,7 +71,7 @@ class LazySizesTransform(object):
             return None
 
         # we only process elements inside the "content" <div>
-        root = '//div[@id="content"]'
+        root = '//*[@id="content"]'
         [self._lazyload(e) for e in result.tree.xpath(root + '//img')]
         [self._lazyload(e) for e in result.tree.xpath(root + '//iframe')]
 
