@@ -23,3 +23,11 @@ class ILazySizesSettings(form.Schema):
         value_type=schema.Choice(
             vocabulary=u'collective.lazysizes.ImageScales'),
     )
+
+    authenticated_enabled = schema.Bool(
+        title=_(u'Enable for Authenticated users?'),
+        description=_(
+            u'Enable lazysizes for authenticated users?'),
+        required=True,
+        default=False
+    )
