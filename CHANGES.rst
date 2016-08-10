@@ -4,6 +4,9 @@ Changelog
 1.5.0b2 (unreleased)
 --------------------
 
+- Update Lazysizes to version 2.0.0 (closes `#20`_).
+  [rodfersou]
+
 - Do not raise an exception in case Twitter's embed code was somehow modified (closes `#17`_).
   [hvelarde]
 
@@ -68,3 +71,4 @@ Changelog
 .. _`#11`: https://github.com/collective/collective.lazysizes/issues/11
 .. _`#15`: https://github.com/collective/collective.lazysizes/issues/15
 .. _`#17`: https://github.com/collective/collective.lazysizes/issues/17
+.. _`#20`: https://github.com/collective/collective.lazysizes/issues/20
