@@ -4,7 +4,7 @@ Changelog
 1.5.0b2 (unreleased)
 --------------------
 
-- Update Lazysizes to version 2.0.0 (closes `#20`_).
+- lazysizes was upgraded to version 2.0.0 and we are using now the AMD module (closes `#20`_).
   [rodfersou]
 
 - Do not raise an exception in case Twitter's embed code was somehow modified (closes `#17`_).

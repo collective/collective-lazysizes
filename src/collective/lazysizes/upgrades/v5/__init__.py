@@ -17,4 +17,4 @@ def use_amd_version(setup_tool):
     if OLD_JS in portal_js.getResourceIds():
         portal_js.renameResource(OLD_JS, NEW_JS)
         assert NEW_JS in portal_js.getResourceIds()
-        logger.info('Lazysizes version updated to AMD.')
+        logger.info('lazysizes was upgraded; using now the AMD module')
