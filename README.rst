@@ -6,13 +6,13 @@ collective.lazysizes
 
 Life, the Universe, and Everything
 ==================================
+Lazy Sizes introduces `lazysizes`_ to Plone pages.  Lazysizes replaces out-of-view page images with a grey box until the user scrolls the page to where the picture should be visible.  Then, the picture is seamlessly inserted and page is properly displayed.
 
-This package integrates `lazysizes`_, a lightweight lazy loader, into Plone.
+This reduces page load times up to 80%, 75% in page size and 50% in number of requests.
 
-`lazysizes`_ is a fast, SEO-friendly and self-initializing lazyloader for images (including responsive images picture/srcset), iframes, scripts/widgets and much more.
-It also prioritizes resources by differentiating between crucial in view and near view elements to make perceived performance even faster.
 
-By using this package you can expect reductions of up to 80% in load time, 75% in page size and 50% in number of requests.
+
+
 
 Mostly Harmless
 ===============
