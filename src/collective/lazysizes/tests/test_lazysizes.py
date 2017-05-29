@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from collective.lazysizes.config import IS_PLONE_5
+from collective.lazysizes.interfaces import ILazySizesSettings
 from collective.lazysizes.testing import FUNCTIONAL_TESTING
 from collective.lazysizes.transform import PLACEHOLDER
 from plone import api
@@ -85,7 +86,6 @@ class LazySizesTestCase(unittest.TestCase):
 
     @unittest.skipIf(not IS_PLONE_5, 'Plone 5 only')
     def test_blacklist_plone_5(self):
-        from collective.lazysizes.interfaces import ILazySizesSettings
         record = ILazySizesSettings.__identifier__ + '.css_class_blacklist'
         api.portal.set_registry_record(record, set(['discreet']))
         transaction.commit()

@@ -3,8 +3,10 @@ from collective.lazysizes.interfaces import ILazySizesSettings
 from collective.lazysizes.logger import logger
 from lxml import etree
 from plone import api
+from plone.registry.interfaces import IRegistry
 from plone.transformchain.interfaces import ITransform
 from repoze.xmliter.utils import getHTMLSerializer
+from zope.component import getUtility
 from zope.interface import implementer
 
 
@@ -154,16 +156,17 @@ class LazySizesTransform(object):
         return
 
     def transformIterable(self, result, encoding):
-        if not api.user.is_anonymous():
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(ILazySizesSettings)
+
+        if not (api.user.is_anonymous() or settings.lazyload_authenticated):
             return
 
         result = self._parse(result)
         if result is None:
             return
 
-        record = ILazySizesSettings.__identifier__ + '.css_class_blacklist'
-        blacklist = api.portal.get_registry_record(record)
-        blacklist = self._blacklist(result, blacklist)
+        blacklist = self._blacklist(result, settings.css_class_blacklist)
 
         path = '{0}//img|{0}//iframe|{0}//blockquote'.format(ROOT_SELECTOR)
         for el in result.tree.xpath(path):
