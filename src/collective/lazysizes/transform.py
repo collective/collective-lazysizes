@@ -159,8 +159,11 @@ class LazySizesTransform(object):
         registry = getUtility(IRegistry)
         settings = registry.forInterface(ILazySizesSettings)
 
-        if not (api.user.is_anonymous() or settings.lazyload_authenticated):
-            return
+        # we apply the transform always for anonymous users
+        if not api.user.is_anonymous():
+            # the user is authenticated, check if enabled
+            if not settings.lazyload_authenticated:
+                return  # transform not enabled for authenticated users
 
         result = self._parse(result)
         if result is None:
