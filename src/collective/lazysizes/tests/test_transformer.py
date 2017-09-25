@@ -143,15 +143,15 @@ class TransformerTestCase(unittest.TestCase):
         # Case 1: Do not transform Blacklisted - single class
         html = tpl.format(url, 'nolazyload')
         result = self.transformer.transformIterable(html, 'utf-8')
-        img = result.tree.find('//img')
-        self.assertTrue('data-src' not in img.attrib.keys())
+        img = result.tree.xpath('//img')[0]
+        self.assertNotIn('data-src', img.attrib.keys())
         self.assertEqual(img.attrib['src'], url)
 
         # Case 2: Do not transform Blacklisted - multiple classes
         html = tpl.format(url, 'nolazyload secondclass thirdclass')
         result = self.transformer.transformIterable(html, 'utf-8')
-        img = result.tree.find('//img')
-        self.assertTrue('data-src' not in img.attrib.keys())
+        img = result.tree.xpath('//img')[0]
+        self.assertNotIn('data-src', img.attrib.keys())
         self.assertEqual(img.attrib['src'], url)
 
         # Case 3: Do not blacklist classes which contain the classname
@@ -160,6 +160,6 @@ class TransformerTestCase(unittest.TestCase):
             'nolazyloadbutactuallylazyload anothernolazyloadbutnot'
         )
         result = self.transformer.transformIterable(html, 'utf-8')
-        img = result.tree.find('//img')
+        img = result.tree.xpath('//img')[0]
         self.assertEqual(img.attrib['data-src'], url)
         self.assertEqual(img.attrib['src'], PLACEHOLDER)

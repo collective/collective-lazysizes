@@ -1,8 +1,11 @@
 Changelog
 =========
 
-3.0.1 (unreleased)
-------------------
+3.1 (unreleased)
+----------------
+
+- Plone 5 + Plone 4 compatibility.
+  [thet]
 
 - Extend the ``uninstall`` profile with more de-registrations.
   [thet]
