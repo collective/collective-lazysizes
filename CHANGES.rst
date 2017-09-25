@@ -4,6 +4,9 @@ Changelog
 3.0.1 (unreleased)
 ------------------
 
+- Fix the blacklist xpath selector to also match elements with the class directly set on it.
+  [thet]
+
 - Add configlet option to enable lazy loading for authenticated users.
   [hvelarde]
 

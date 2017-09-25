@@ -5,6 +5,8 @@ from collective.lazysizes.transform import LazySizesTransform
 from collective.lazysizes.transform import PLACEHOLDER
 from plone import api
 from plone.app.testing import logout
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
 
 import lxml
 import unittest
@@ -123,3 +125,41 @@ class TransformerTestCase(unittest.TestCase):
         element = lxml.html.fromstring(TWEET_NO_SCRIPT)
         # the transformer returns None (skip element)
         self.assertIsNone(self.transformer._lazyload_tweet(element))
+
+    def test_lazyload_blacklist(self):
+        """Test, if blacklisted elements are transformed.
+        """
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(ILazySizesSettings)
+        settings.css_class_blacklist = set(['nolazyload'])
+
+        tpl = u'<html><body><div id="content">'\
+            + u'<img src="{0}" class="{1}"/>'\
+            + u'</div></body></html>'
+        url = u'http://example.com/foo.png'
+
+        logout()  # Make available
+
+        # Case 1: Do not transform Blacklisted - single class
+        html = tpl.format(url, 'nolazyload')
+        result = self.transformer.transformIterable(html, 'utf-8')
+        img = result.tree.find('//img')
+        self.assertTrue('data-src' not in img.attrib.keys())
+        self.assertEqual(img.attrib['src'], url)
+
+        # Case 2: Do not transform Blacklisted - multiple classes
+        html = tpl.format(url, 'nolazyload secondclass thirdclass')
+        result = self.transformer.transformIterable(html, 'utf-8')
+        img = result.tree.find('//img')
+        self.assertTrue('data-src' not in img.attrib.keys())
+        self.assertEqual(img.attrib['src'], url)
+
+        # Case 3: Do not blacklist classes which contain the classname
+        html = tpl.format(
+            url,
+            'nolazyloadbutactuallylazyload anothernolazyloadbutnot'
+        )
+        result = self.transformer.transformIterable(html, 'utf-8')
+        img = result.tree.find('//img')
+        self.assertEqual(img.attrib['data-src'], url)
+        self.assertEqual(img.attrib['src'], PLACEHOLDER)
