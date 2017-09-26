@@ -4,6 +4,9 @@ Changelog
 3.0.1 (unreleased)
 ------------------
 
+- Extend the ``uninstall`` profile with more de-registrations.
+  [thet]
+
 - Fix the blacklist xpath selector to also match elements with the class directly set on it.
   [thet]
 
