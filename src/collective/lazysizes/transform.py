@@ -161,16 +161,17 @@ class LazySizesTransform(object):
 
         # we apply the transform always for anonymous users
         if not api.user.is_anonymous():
-            # the user is authenticated, check if enabled
-            if not getattr(settings, 'lazyload_authenticated', False):
-                return  # transform not enabled for authenticated users
+            # user is authenticated, check if transform is enabled
+            enabled = getattr(settings, 'lazyload_authenticated', False)
+            if not enabled:
+                return  # no need to transform
 
         result = self._parse(result)
         if result is None:
             return
 
-        blacklist = self._blacklist(
-            result, getattr(settings, 'css_class_blacklist', set()))
+        css_class_blacklist = getattr(settings, 'css_class_blacklist', set())
+        blacklist = self._blacklist(result, css_class_blacklist)
 
         path = '{0}//img|{0}//iframe|{0}//blockquote'.format(ROOT_SELECTOR)
         for el in result.tree.xpath(path):
