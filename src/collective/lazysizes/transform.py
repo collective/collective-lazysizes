@@ -157,19 +157,22 @@ class LazySizesTransform(object):
 
     def transformIterable(self, result, encoding):
         registry = getUtility(IRegistry)
-        settings = registry.forInterface(ILazySizesSettings)
+        settings = registry.forInterface(ILazySizesSettings, check=False)
 
         # we apply the transform always for anonymous users
         if not api.user.is_anonymous():
             # the user is authenticated, check if enabled
-            if not settings.lazyload_authenticated:
+            if not getattr(settings, 'lazyload_authenticated', False):
                 return  # transform not enabled for authenticated users
 
         result = self._parse(result)
         if result is None:
             return
 
-        blacklist = self._blacklist(result, settings.css_class_blacklist)
+        blacklist = self._blacklist(
+            result,
+            getattr(settings, 'css_class_blacklist', set())
+        )
 
         path = '{0}//img|{0}//iframe|{0}//blockquote'.format(ROOT_SELECTOR)
         for el in result.tree.xpath(path):
