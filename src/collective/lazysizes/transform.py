@@ -170,9 +170,7 @@ class LazySizesTransform(object):
             return
 
         blacklist = self._blacklist(
-            result,
-            getattr(settings, 'css_class_blacklist', set())
-        )
+            result, getattr(settings, 'css_class_blacklist', set()))
 
         path = '{0}//img|{0}//iframe|{0}//blockquote'.format(ROOT_SELECTOR)
         for el in result.tree.xpath(path):
