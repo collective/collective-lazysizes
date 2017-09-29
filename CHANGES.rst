@@ -4,6 +4,9 @@ Changelog
 4.0.0rc3 (unreleased)
 ---------------------
 
+- Upgrade lazysizes to v4.0.0rc3. Twitter plugin is now CommonJS compatible.
+  [hvelarde]
+
 - Require plone.app.registry >=1.5. Refs #42
   [erral]
 
