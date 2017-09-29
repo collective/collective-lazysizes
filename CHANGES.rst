@@ -4,13 +4,13 @@ Changelog
 3.1 (unreleased)
 ----------------
 
-- Plone 5 + Plone 4 compatibility.
+- Fix Plone 5 compatibility.
   [thet]
 
 - Extend the ``uninstall`` profile with more de-registrations.
   [thet]
 
-- Fix the blacklist xpath selector to also match elements with the class directly set on it.
+- Fix the blacklist XPath selector to also match elements with the class directly set on it.
   [thet]
 
 - Add configlet option to enable lazy loading for authenticated users.

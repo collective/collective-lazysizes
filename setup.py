@@ -65,6 +65,7 @@ setup(
             'plone.registry',
             'plone.testing',
             'robotsuite',
+            'testfixtures',
             'zope.component',
         ],
     },
