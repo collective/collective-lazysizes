@@ -4,6 +4,9 @@ Changelog
 3.1 (unreleased)
 ----------------
 
+- Add a 18n update script.
+  [thet]
+
 - Add explicit i18n message ids instead of implicit based on the translation string.
   [thet]
 
