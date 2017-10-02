@@ -4,10 +4,7 @@ Changelog
 3.1 (unreleased)
 ----------------
 
-- Add german translations.
-  [thet]
-
-- Add a 18n update script.
+- Add German translations.
   [thet]
 
 - Add explicit i18n message ids instead of implicit based on the translation string.
