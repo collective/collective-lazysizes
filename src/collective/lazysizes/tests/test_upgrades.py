@@ -47,7 +47,7 @@ class To2TestCase(UpgradeTestCaseBase):
 
     def test_upgrade_to_2_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 2)
 
     def test_add_new_field_to_configlet(self):
@@ -82,7 +82,7 @@ class To3TestCase(UpgradeTestCaseBase):
 
     def test_upgrade_to_2_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 1)
 
 
@@ -93,7 +93,7 @@ class To4TestCase(UpgradeTestCaseBase):
 
     def test_upgrade_to_2_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 2)
 
     @unittest.skipIf(IS_PLONE_5, 'No easy way to test this under Plone 5')
@@ -128,7 +128,7 @@ class To5TestCase(UpgradeTestCaseBase):
 
     def test_upgrade_to_2_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 2)
 
     @unittest.skipIf(IS_PLONE_5, 'Upgrade step not supported under Plone 5')
@@ -158,7 +158,7 @@ class To6TestCase(UpgradeTestCaseBase):
 
     def test_upgrade_to_6_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 1)
 
 
@@ -169,7 +169,7 @@ class To7TestCase(UpgradeTestCaseBase):
 
     def test_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 2)
 
     @unittest.skipIf(IS_PLONE_5, 'Upgrade step not supported under Plone 5')
@@ -197,7 +197,7 @@ class To8TestCase(UpgradeTestCaseBase):
 
     def test_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 1)
 
     def test_add_new_field_to_configlet(self):
@@ -232,5 +232,16 @@ class To9TestCase(UpgradeTestCaseBase):
 
     def test_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 1)
+
+
+class To10TestCase(UpgradeTestCaseBase):
+
+    def setUp(self):
+        UpgradeTestCaseBase.setUp(self, u'9', u'10')
+
+    def test_registrations(self):
+        version = self.setup.getLastVersionForProfile(self.profile_id)[0]
+        self.assertGreaterEqual(int(version), int(self.to_version))
+        self.assertEqual(self.total_steps, 3)
