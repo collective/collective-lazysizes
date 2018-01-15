@@ -1,0 +1,8 @@
+{
+  "name": "collective.lazysizes",
+  "repository": "git@github.com:collective/collective.lazysizes.git",
+  "license": "GPLv2",
+  "dependencies": {
+    "lazysizes": "4.0.1"
+  }
+}

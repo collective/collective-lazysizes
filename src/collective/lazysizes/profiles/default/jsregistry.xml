@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
 <object name="portal_javascripts">
-  <javascript id="++resource++collective.lazysizes/ls.twitter.min.js"
+  <javascript id="++resource++collective.lazysizes/lazysizes/plugins/twitter/ls.twitter.min.js"
       cacheable="True" compression="none" cookable="True" enabled="True"
       expression="" inline="False"
-      insert-before="++resource++collective.lazysizes/lazysizes-umd.min.js"
+      insert-before="++resource++collective.lazysizes/lazysizes/lazysizes-umd.min.js"
       />
   <javascript id="++resource++collective.lazysizes/lazysizes-umd.min.js"
       cacheable="True" compression="none" cookable="True" enabled="True"
       expression="" inline="False" />
+  <javascript id="++resource++collective.lazysizes/lazysizes/plugins/print/ls.print.js"
+      cacheable="True" compression="none" cookable="True" enabled="True"
+      expression="" inline="False"
+      insert-after="++resource++collective.lazysizes/lazysizes-umd.min.js"
+      />
 </object>
