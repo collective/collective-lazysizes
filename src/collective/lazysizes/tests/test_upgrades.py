@@ -47,7 +47,7 @@ class To2TestCase(UpgradeTestCaseBase):
 
     def test_upgrade_to_2_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 2)
 
     def test_add_new_field_to_configlet(self):
@@ -82,7 +82,7 @@ class To3TestCase(UpgradeTestCaseBase):
 
     def test_upgrade_to_2_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 1)
 
 
@@ -93,32 +93,8 @@ class To4TestCase(UpgradeTestCaseBase):
 
     def test_upgrade_to_2_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 2)
-
-    @unittest.skipIf(IS_PLONE_5, 'No easy way to test this under Plone 5')
-    def test_add_twitter_lazy_loader(self):
-        title = u'Implement support for lazy loading tweets'
-        step = self.get_upgrade_step(title)
-        assert step is not None
-
-        # simulate state on previous version
-        main_script = '++resource++collective.lazysizes/lazysizes-umd.min.js'
-        twitter_script = '++resource++collective.lazysizes/ls.twitter.min.js'
-        js_tool = api.portal.get_tool('portal_javascripts')
-        js_tool.unregisterResource(twitter_script)
-        assert twitter_script not in js_tool.getResourceIds()
-
-        # execute upgrade step and verify changes were applied
-        self.execute_upgrade_step(step)
-
-        # the plugin script must be present
-        self.assertIn(twitter_script, js_tool.getResourceIds())
-        # and must be loaded before the lazySizes main script
-        self.assertEqual(
-            js_tool.getResourcePosition(twitter_script),
-            js_tool.getResourcePosition(main_script) - 1,
-        )
 
 
 class To5TestCase(UpgradeTestCaseBase):
@@ -128,7 +104,7 @@ class To5TestCase(UpgradeTestCaseBase):
 
     def test_upgrade_to_2_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 2)
 
     @unittest.skipIf(IS_PLONE_5, 'Upgrade step not supported under Plone 5')
@@ -158,7 +134,7 @@ class To6TestCase(UpgradeTestCaseBase):
 
     def test_upgrade_to_6_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 1)
 
 
@@ -169,7 +145,7 @@ class To7TestCase(UpgradeTestCaseBase):
 
     def test_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 2)
 
     @unittest.skipIf(IS_PLONE_5, 'Upgrade step not supported under Plone 5')
@@ -197,7 +173,7 @@ class To8TestCase(UpgradeTestCaseBase):
 
     def test_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 1)
 
     def test_add_new_field_to_configlet(self):
@@ -232,7 +208,7 @@ class To9TestCase(UpgradeTestCaseBase):
 
     def test_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 1)
 
 
@@ -243,7 +219,7 @@ class To10TestCase(UpgradeTestCaseBase):
 
     def test_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
-        self.assertGreaterEqual(version, self.to_version)
+        self.assertGreaterEqual(int(version), int(self.to_version))
         self.assertEqual(self.total_steps, 3)
 
     @unittest.skipIf(IS_PLONE_5, 'Upgrade step not supported under Plone 5')
