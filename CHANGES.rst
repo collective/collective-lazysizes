@@ -4,6 +4,12 @@ Changelog
 4.0.2 (unreleased)
 ------------------
 
+- Add the print plugin by default.
+  [thet]
+
+- Use ``yarn`` to manage JavaScript dependencies and upgrade resource paths to new location.
+  [thet]
+
 - Avoid ``ValueError`` when upgrading from profile version 3 (fixes `#46 <https://github.com/collective/collective.lazysizes/issues/46>`_).
   [hvelarde]
 
