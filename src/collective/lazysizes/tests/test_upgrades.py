@@ -220,7 +220,7 @@ class To10TestCase(UpgradeTestCaseBase):
     def test_registrations(self):
         version = self.setup.getLastVersionForProfile(self.profile_id)[0]
         self.assertGreaterEqual(int(version), int(self.to_version))
-        self.assertEqual(self.total_steps, 3)
+        self.assertEqual(self.total_steps, 2)
 
     @unittest.skipIf(IS_PLONE_5, 'Upgrade step not supported under Plone 5')
     def test_use_webpack(self):
@@ -232,28 +232,15 @@ class To10TestCase(UpgradeTestCaseBase):
         # simulate state on previous version
         from collective.lazysizes.upgrades.v10 import NEW_JS
         from collective.lazysizes.upgrades.v10 import OLD_JS
+        from collective.lazysizes.upgrades.v10 import TWITTER_JS
         portal_js = api.portal.get_tool('portal_javascripts')
         portal_js.renameResource(NEW_JS, OLD_JS)
+        portal_js.registerResource(TWITTER_JS)
         assert OLD_JS in portal_js.getResourceIds()
+        assert TWITTER_JS in portal_js.getResourceIds()
 
         # run the upgrade step to validate the update
         self.execute_upgrade_step(step)
         self.assertNotIn(OLD_JS, portal_js.getResourceIds())
         self.assertIn(NEW_JS, portal_js.getResourceIds())
-
-    @unittest.skipIf(IS_PLONE_5, 'Upgrade step not supported under Plone 5')
-    def test_remove_twitter_plugin(self):
-        # check if the upgrade step is registered
-        title = u'Remove Twitter plugin'
-        step = self.get_upgrade_step(title)
-        assert step is not None
-
-        # simulate state on previous version
-        from collective.lazysizes.upgrades.v10 import TWITTER_JS
-        portal_js = api.portal.get_tool('portal_javascripts')
-        portal_js.registerResource(TWITTER_JS)
-        assert TWITTER_JS in portal_js.getResourceIds()
-
-        # run the upgrade step to validate the update
-        self.execute_upgrade_step(step)
         self.assertNotIn(TWITTER_JS, portal_js.getResourceIds())

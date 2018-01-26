@@ -10,13 +10,8 @@
       profile="collective.lazysizes:default">
     <genericsetup:upgradeStep
         title="Use resource compiled from webpack"
-        description=""
-        handler=".use_webpack"
-        />
-    <genericsetup:upgradeStep
-        title="Remove Twitter plugin"
         description="Now twitter plugin is bundled into the same javascript"
-        handler=".remove_twitter_plugin"
+        handler=".update_static_resources"
         />
     <genericsetup:upgradeStep
         title="Cook JavaScripts resources"
