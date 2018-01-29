@@ -74,11 +74,11 @@ These transforms are applied to anonymous users only.
 Development
 -----------
 
-We use Webpack to process static resources on this package.
+We use `webpack <https://webpack.js.org/>`_ to process static resources on this package.
 Webpack processes SCSS and JS files, minifies the resulting CSS and JS, and optimizes all images.
 The final JS file is also a UMD package, which provides compatibility with most popular script loaders.
 
-To contribute, you should start the instance in one shell and start Webpack watcher on another with the following command:
+To contribute, you should start the instance in one shell and start webpack watcher on another with the following command:
 
 .. code-block:: bash
 
@@ -88,7 +88,7 @@ Then go to ``webpack/app`` folder and edit SCSS and JS files;
 Webpack watcher will automatically create the final resources in the right place.
 
 There are also other commands added to handle more complex scenarios.
-The following command will set the buildout node installation in the system PATH, this way you can use Webpack as described on Webpack docs.
+The following command will set the buildout node installation in the system PATH, this way you can use webpack as described on its documentation.
 
 .. code-block:: bash
 

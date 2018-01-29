@@ -4,7 +4,7 @@ Changelog
 4.0.2 (unreleased)
 ------------------
 
-- Add webpack.
+- Process static resources using webpack.
   [rodfersou]
 
 - Avoid ``ValueError`` when upgrading from profile version 3 (fixes `#46 <https://github.com/collective/collective.lazysizes/issues/46>`_).
