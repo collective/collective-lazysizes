@@ -40,10 +40,8 @@ setup(
     zip_safe=False,
     install_requires=[
         'lxml',
-        'plone.api',
         'plone.app.imaging',
         'plone.app.registry >=1.5',
-        'plone.app.upgrade',
         'plone.autoform',
         'plone.supermodel',
         'plone.transformchain',
@@ -52,6 +50,7 @@ setup(
         'Products.ResourceRegistries >=2.2.12',
         'repoze.xmliter',
         'setuptools',
+        'zope.component',
         'zope.i18nmessageid',
         'zope.interface',
         'zope.schema',
@@ -66,7 +65,6 @@ setup(
             'plone.testing',
             'robotsuite',
             'testfixtures',
-            'zope.component',
         ],
     },
     entry_points="""
