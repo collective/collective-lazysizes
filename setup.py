@@ -40,9 +40,11 @@ setup(
     zip_safe=False,
     install_requires=[
         'lxml',
+        'plone.api',
         'plone.app.imaging',
         'plone.app.registry >=1.5',
         'plone.autoform',
+        'plone.registry',
         'plone.supermodel',
         'plone.transformchain',
         'Products.CMFPlone >=4.3',
