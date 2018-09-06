@@ -5,9 +5,9 @@ const childProcess = require('child_process');
 const gitCmd = 'git rev-list -1 HEAD --abbrev-commit $(pwd)'
 const gitHash = childProcess.execSync(gitCmd).toString().substring(0, 7);
 
-// clean up old resources
-const path = `${__dirname}/../src/collective/lazysizes/static`
-childProcess.execSync(`rm -f ${path}/lazysizes*`);
+// clean up old script
+const path = `${__dirname}/../src/collective/lazysizes/browser/static`
+childProcess.execSync(`rm -f ${path}/lazysizes-*`);
 
 module.exports = {
   entry: [
