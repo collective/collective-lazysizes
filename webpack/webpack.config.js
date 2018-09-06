@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 // get partial prefix of latest commit in webpack directory
 const childProcess = require('child_process');
 const gitCmd = 'git rev-list -1 HEAD --abbrev-commit $(pwd)'
@@ -55,4 +57,10 @@ module.exports = {
       ]
     }]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: `${__dirname}/../src/collective/lazysizes/browser/resources.pt`,
+      template: 'resources.pt',
+    })
+  ]
 }
