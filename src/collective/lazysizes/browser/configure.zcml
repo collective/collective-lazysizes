@@ -7,7 +7,7 @@
       name="collective.lazysizes.resources"
       manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
       class=".ResourcesViewlet"
-      template="resources.pt"
+      template="../static/resources.pt"
       permission="zope2.Public"
       />
 

@@ -59,8 +59,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: `${__dirname}/../src/collective/lazysizes/browser/resources.pt`,
-      template: 'resources.pt',
+      inject: false,
+      filename: 'resources.pt',
+      template: 'app/resources.pt',
     })
   ]
 }
