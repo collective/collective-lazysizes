@@ -1,9 +1,11 @@
 Changelog
 =========
 
-4.1.1.2 (unreleased)
---------------------
+4.1.2 (unreleased)
+------------------
 
+- Upgrade lazysizes to v4.1.2.
+  [thet]
 
 - Add browser layer to ``collective.lazysizes.resources`` viewlet registration;
   this avoids showing the viewlet when the package is not yet installed (fixes `#69 <https://github.com/collective/collective.lazysizes/issues/69>`_).
