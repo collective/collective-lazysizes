@@ -4,6 +4,9 @@ Changelog
 4.1.2 (unreleased)
 ------------------
 
+- Do not import the UMD version of lazysizes to avoid the "Error: Mismatched anonymous define" error.
+  [thet]
+
 - Upgrade lazysizes to v4.1.2.
   [thet]
 
