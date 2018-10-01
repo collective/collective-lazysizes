@@ -4,7 +4,7 @@ Changelog
 4.1.2 (unreleased)
 ------------------
 
-- Set webpack ``output.libraryExport`` to ``default`` to avoid ``Mismatched anonymous define() module`` error.
+- Set webpack ``output.libraryExport`` to ``default`` to avoid ``Mismatched anonymous define() module`` error (fixes `#67 <https://github.com/collective/collective.lazysizes/issues/67>`_).
   [rodfersou, hvelarde]
 
 - Upgrade lazysizes to v4.1.2.
