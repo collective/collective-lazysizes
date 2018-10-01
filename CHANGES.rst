@@ -4,7 +4,9 @@ Changelog
 4.1.1.2 (unreleased)
 --------------------
 
-- Register resource viewlet only when the product is installed
+
+- Add browser layer to ``collective.lazysizes.resources`` viewlet registration;
+  this avoids showing the viewlet when the package is not yet installed (fixes `#69 <https://github.com/collective/collective.lazysizes/issues/69>`_).
   [erral]
 
 
