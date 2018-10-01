@@ -4,8 +4,8 @@ Changelog
 4.1.2 (unreleased)
 ------------------
 
-- Do not import the UMD version of lazysizes to avoid the "Error: Mismatched anonymous define" error.
-  [thet]
+- Set webpack ``output.libraryExport`` to ``default`` to avoid ``Mismatched anonymous define() module`` error.
+  [rodfersou, hvelarde]
 
 - Upgrade lazysizes to v4.1.2.
   [thet]

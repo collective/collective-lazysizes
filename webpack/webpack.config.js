@@ -17,7 +17,8 @@ module.exports = {
   output: {
     filename: `lazysizes-${gitHash}.js`,
     library: 'lazysizes',
-    libraryTarget: 'var',
+    libraryTarget: 'umd',
+    libraryExport: 'default',
     path: path,
     publicPath: '++resource++collective.lazysizes/',
   },
