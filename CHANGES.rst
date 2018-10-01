@@ -4,7 +4,8 @@ Changelog
 4.1.1.2 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Register resource viewlet only when the product is installed
+  [erral]
 
 
 4.1.1.1 (2018-09-10)
