@@ -4,6 +4,9 @@ Changelog
 4.1.3 (unreleased)
 ------------------
 
+- Fix library generation for Plone 5.
+  [thet, rodfersou]
+
 - Update Brazilian Portuguese and Spanish translations.
   [hvelarde]
 
