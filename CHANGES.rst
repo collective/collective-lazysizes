@@ -1,10 +1,10 @@
 Changelog
 =========
 
-4.1.3 (unreleased)
-------------------
+4.1.2.1 (unreleased)
+--------------------
 
-- Fix library generation for Plone 5.
+- Set webpack ``output.libraryTarget`` to ``var`` and do not import the UMD version of lazysizes to avoid ``Mismatched anonymous define() module`` error in Plone 5 (refs. `#67 <https://github.com/collective/collective.lazysizes/issues/67>`_).
   [thet, rodfersou]
 
 - Update Brazilian Portuguese and Spanish translations.
